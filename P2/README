@@ -8,4 +8,6 @@ This release contains:
 - test.tar.gz: your test data
 - train.tar.gz: your training data
 
+You can also find the data in the Files section of the CS181 Canvas page.
+
 Use tar -xvf to untar on Linux machines.
