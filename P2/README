@@ -1,0 +1,9 @@
+Download data at:
+
+https://github.com/harvard-ml-courses/cs181-s18-practicals/releases/tag/v1.2
+
+This release contains:
+- test.tar.gz: your test data
+- train.tar.gz: your training data
+
+Use tar -xvf to untar on Linux machines.
