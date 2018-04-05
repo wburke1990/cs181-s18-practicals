@@ -180,4 +180,24 @@ The Most Frequent Class baseline just predicts the most frequent class found in 
     
 \end{itemize}
 
+\begin{table}
+\centering
+\begin{tabular}{llrr}
+ \toprule
+ Model &  & Validation RMSE. & Test RMSE.\\
+ \midrule
+ \textsc{LinearRegression} & & 0.0905 &\\
+ \textsc{RandomForestRegressor} & & 0.0754 & 0.27208\\
+ \textsc{LassoCV} & & 0.0906  & 0.29850\\
+ \textsc{RidgeCV} & &0.0905 & 0.29845\\
+ \textsc{ElasticNet} & & 0.1663 & \\
+ \textsc{MLPRegressor} & & 0.0777 & 0.27496\\
+ \textsc{BaggingRegressor} & & 0.0754 & 0.27208\\
+ \textsc{GradientBoostingRegressor} & & 0.0828 & 0.28592\\
+ 
+ \bottomrule
+\end{tabular}
+\caption{\label{tab:results} We tried most of the suggested models on our cleaned version of the original data set. In this table, we report the initial root mean squared errors that we found when testing the trained models against our the validation set.}
+\end{table}
+
 \end{document}
