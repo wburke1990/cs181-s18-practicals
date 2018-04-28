@@ -1,6 +1,10 @@
 # Imports.
 import numpy as np
 import numpy.random as npr
+<<<<<<< HEAD
+=======
+import pygame as pg
+>>>>>>> seed_repo/master
 
 from SwingyMonkey import SwingyMonkey
 
@@ -49,7 +53,10 @@ def run_games(learner, hist, iters = 100, t_len = 100):
     '''
     Driver function to simulate learning by having the agent play a sequence of games.
     '''
+<<<<<<< HEAD
     
+=======
+>>>>>>> seed_repo/master
     for ii in range(iters):
         # Make a new monkey object.
         swing = SwingyMonkey(sound=False,                  # Don't play sounds.
@@ -67,7 +74,11 @@ def run_games(learner, hist, iters = 100, t_len = 100):
 
         # Reset the state of the learner.
         learner.reset()
+<<<<<<< HEAD
         
+=======
+    pg.quit()
+>>>>>>> seed_repo/master
     return
 
 
