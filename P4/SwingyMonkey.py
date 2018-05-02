@@ -34,6 +34,8 @@ class SwingyMonkey:
         self.screen_height = 400
         self.horz_speed    = 25
         self.impulse       = 15
+        #self.gravity       = 4
+        #self.gravity       = 1
         self.gravity       = npr.choice([1,4])
         self.tree_mean     = 5
         self.tree_gap      = 200
@@ -124,9 +126,9 @@ class SwingyMonkey:
         screen.  It calls the action and reward callbacks.'''
 
         # Render the background.
-        self.screen.blit(self.background_img, (self.iter,0))
-        if self.iter < self.background_img.get_width() - self.screen_width:
-            self.screen.blit(self.background_img, (self.iter+self.background_img.get_width(),0))
+        #self.screen.blit(self.background_img, (self.iter,0))
+        #if self.iter < self.background_img.get_width() - self.screen_width:
+        #self.screen.blit(self.background_img, (self.iter+self.background_img.get_width(),0))
 
         # Perhaps generate a new tree.
         if self.next_tree <= 0:
@@ -167,16 +169,16 @@ class SwingyMonkey:
             tree['x'] -= self.horz_speed
 
             # Render tree.
-            self.screen.blit(self.tree_img, (tree['x'], self.tree_offset))
+            #self.screen.blit(self.tree_img, (tree['x'], self.tree_offset))
 
             # Render gap in tree.
-            self.screen.blit(self.background_img, (tree['x'], tree['y']),
-                             (tree['x']-self.iter, tree['y'],
-                              self.tree_img.get_width(), self.tree_gap))
-            if self.iter < self.background_img.get_width() - self.screen_width:
-                self.screen.blit(self.background_img, (tree['x'], tree['y']),
-                                 (tree['x']-(self.iter+self.background_img.get_width()), tree['y'],
-                                  self.tree_img.get_width(), self.tree_gap))
+            #self.screen.blit(self.background_img, (tree['x'], tree['y']),
+            #                 (tree['x']-self.iter, tree['y'],
+            #                  self.tree_img.get_width(), self.tree_gap))
+            #if self.iter < self.background_img.get_width() - self.screen_width:
+            #    self.screen.blit(self.background_img, (tree['x'], tree['y']),
+            #                     (tree['x']-(self.iter+self.background_img.get_width()), tree['y'],
+            #                      self.tree_img.get_width(), self.tree_gap))
                 
             trunk_left  = tree['x']
             trunk_right = tree['x'] + self.tree_img.get_width()
@@ -190,6 +192,12 @@ class SwingyMonkey:
                 #pg.draw.rect(self.screen, (255,0,0), (self.monkey_left+15, monkey_top, self.monkey_img.get_width()-15, monkey_bot-monkey_top), 1)
                 if (monkey_top < trunk_top) or (monkey_bot > trunk_bot):
                     tree_hit = True
+                        #if monkey_bot > trunk_bot:
+                    #print "treebot"
+                    #print self.get_state()
+                    #if monkey_top < trunk_top:
+                       #print "treetop"
+                       #print self.get_state()
             
             # Keep score.
             if not tree['s'] and (self.monkey_left+15) > trunk_right:
@@ -200,24 +208,27 @@ class SwingyMonkey:
                     self.blop_snd.play()
 
         # Monkey swings down on a vine.
-        if self.vel < 0:
-            pg.draw.line(self.screen, (92,64,51), (self.screen_width/2+20, self.monkey_loc-25), (self.hook,0), 4)
+        #if self.vel < 0:
+        #pg.draw.line(self.screen, (92,64,51), (self.screen_width/2+20, self.monkey_loc-25), (self.hook,0), 4)
 
         # Render the monkey.
-        self.screen.blit(self.monkey_img, (self.monkey_left, monkey_top))
+        #self.screen.blit(self.monkey_img, (self.monkey_left, monkey_top))
 
         # Fail on hitting top or bottom.
         if monkey_bot > self.screen_height or monkey_top < 0:
             edge_hit = True
+                #if monkey_top < 0 and self.gravity == 1:
+                #print "TOP"
+                #print self.get_state()
 
         # Render the score
         score_text = self.font.render("Score: %d" % (self.score), 1, (230, 40, 40))
-        self.screen.blit(score_text, score_text.get_rect())
+        #self.screen.blit(score_text, score_text.get_rect())
 
         if self.text is not None:
             text = self.font.render(self.text, 1, (230, 40, 40))
             textpos = text.get_rect()
-            self.screen.blit(text, (self.screen_width-textpos[2],0,textpos[2],textpos[3]))
+        #self.screen.blit(text, (self.screen_width-textpos[2],0,textpos[2],textpos[3]))
 
         # Render the display.
         pg.display.update()
